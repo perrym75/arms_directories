@@ -14,22 +14,22 @@ public record ArmsDirectory : IEntity<long>, ISoftDeletableEntity, ICreaateUpdat
     /// <summary>
     /// Наименование справочника
     /// </summary>
-    public string Name { get; init; } = string.Empty;
+    public required string Name { get; init; }
 
     /// <summary>
     /// Описание справочника
     /// </summary>
-    public string Description { get; init; } = string.Empty;
+    public required string Description { get; init; }
 
     /// <summary>
     /// Системное наименование справочника (наименование сущности в REST API)
     /// </summary>
-    public string SystemName { get; init; } = string.Empty;
+    public required string SystemName { get; init; }
 
     /// <summary>
     /// Имя таблицы в БД
     /// </summary>
-    public string TableName { get; init; } = string.Empty;
+    public string TableName { get; init; } = null!;
 
     /// <inheritdoc />
     public DateTimeOffset CreatedAtUtc { get; init; } = DateTimeOffset.UtcNow;
@@ -37,10 +37,12 @@ public record ArmsDirectory : IEntity<long>, ISoftDeletableEntity, ICreaateUpdat
     /// <inheritdoc />
     public DateTimeOffset UpdatedAtUtc { get; set; } = DateTimeOffset.UtcNow;
 
-    public User CreatedBy { get; init; }
+    public required User CreatedBy { get; init; }
 
-    public User UpdatedBy { get; set; }
+    public required User UpdatedBy { get; set; }
 
     /// <inheritdoc />
     public bool IsDeleted { get; set; }
+
+    public IList<ArmsAttribute>? ArmsAttributes { get; set; } = [];
 }

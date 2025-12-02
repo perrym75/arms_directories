@@ -10,5 +10,5 @@ public record User : IEntity<UserId>, ISoftDeletableEntity
     public required string Email { get; init; }
     public required string Name { get; init; }
     public required string Surname { get; init; }
-    public bool IsDeleted { get; set; } = false;
+    public bool IsDeleted { get; set; }
 };

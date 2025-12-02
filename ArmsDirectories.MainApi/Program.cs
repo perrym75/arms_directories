@@ -14,7 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.AddServiceDefaults();
 
-builder.AddNpgsqlDbContext<MainApiDbContext>("arms-directories");
+builder.AddNpgsqlDbContext<MainApiDbContext>("arms-directories", configureDbContextOptions: options => {
+    options.UseSnakeCaseNamingConvention();
+});
 builder.EnrichNpgsqlDbContext<MainApiDbContext>();
 
 builder.Services.AddAllImplementations(typeof(IRepository<,>), ServiceLifetime.Scoped);

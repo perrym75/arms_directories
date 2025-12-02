@@ -12,8 +12,8 @@ var mainDb = builder.AddPostgres("arms-db-server")
     .WithDataVolume()
     .AddDatabase("arms-directories");
 
-
 var mainApi = builder.AddProject<ArmsDirectories_MainApi>("main-api")
+    .WithExternalHttpEndpoints()
     .WithReference(mainDb)
     .WaitFor(mainDb);
 

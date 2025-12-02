@@ -1,15 +1,14 @@
-﻿namespace MainApi.Mappings
+﻿namespace MainApi.Mappings;
+
+public static class Endpoints
 {
-    public static class Endpoints
+    extension(IEndpointRouteBuilder builder)
     {
-        extension(IEndpointRouteBuilder builder)
+        public void MapEndpoints()
         {
-            public void MapEndpoints()
-            {
-                builder.MapUsers();
-                builder.MapDirectoriesMetadata();
-                builder.MapDirectoriesData();
-            }
+            builder.MapUsers();
+            builder.MapDirectoriesMetadata();
+            builder.MapDirectoriesData();
         }
     }
 }

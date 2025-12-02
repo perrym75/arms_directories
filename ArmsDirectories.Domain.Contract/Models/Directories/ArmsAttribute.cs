@@ -13,15 +13,15 @@ public record ArmsAttribute : IEntity<long>, ISoftDeletableEntity, ICreaateUpdat
     /// <summary>
     /// Описание справочника
     /// </summary>
-    public ArmsDirectory directory { get; init; }
+    public required ArmsDirectory Directory { get; init; }
 
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
-    public string SystemName { get; set; }
+    public required string SystemName { get; set; }
 
-    public string ColumnName { get; init; }
+    public string ColumnName { get; init; } = null!;
 
-    public string DataType { get; set; }
+    public required string DataType { get; set; }
 
     public int MaxLength { get; set; }
 
@@ -31,9 +31,9 @@ public record ArmsAttribute : IEntity<long>, ISoftDeletableEntity, ICreaateUpdat
 
     public bool IsUnique { get; init; }
 
-    public string DefaultValue { get; set; }
+    public string? DefaultValue { get; set; }
 
-    public ArmsDirectory ReferenceDirectory { get; set; }
+    public ArmsDirectory? ReferenceDirectory { get; set; }
 
     public int DisplayOrder { get; set; }
 
