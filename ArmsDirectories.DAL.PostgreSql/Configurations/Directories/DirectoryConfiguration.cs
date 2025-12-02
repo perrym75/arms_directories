@@ -19,5 +19,6 @@ public class DirectoryConfiguration : IEntityTypeConfiguration<ArmsDirectory>
             .Property(p => p.TableName)
             .HasMaxLength(64)
             .HasDefaultValueSql($"'table_' || nextval('{Schemas.Default}.table_name_seq')");
+        builder.HasMany(p => p.ArmsAttributes).WithOne();
     }
 }

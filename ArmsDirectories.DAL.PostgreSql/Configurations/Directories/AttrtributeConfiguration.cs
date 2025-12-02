@@ -9,6 +9,7 @@ public class AttributeConfiguration : IEntityTypeConfiguration<ArmsAttribute>
     public void Configure(EntityTypeBuilder<ArmsAttribute> builder)
     {
         builder.HasKey(p => p.Id);
+        builder.HasOne(p => p.Directory).WithMany();
         builder
             .Property(p => p.Name)
             .HasMaxLength(255);
